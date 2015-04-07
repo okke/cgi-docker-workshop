@@ -1,0 +1,35 @@
+# basic CGI Vagrant-docker configuration
+#
+Vagrant.configure(2) do |config|
+
+  # configure proxy
+  config.proxy.http     = "http://proxy.nl.logica.com:80"
+  config.proxy.https    = "http://proxy.nl.logica.com:80"
+  config.proxy.no_proxy = "/var/run/docker.sock,localhost,127.0.0.1"
+
+  # ubuntu-docker downloaded from: https://github.com/jose-lpa/packer-ubuntu_14.04/releases/download/v2.0/ubuntu-14.04.box
+  #
+  config.vm.box = "ubuntu-docker"
+
+  # always handy to have port 8080 forwarded
+  #
+  config.vm.network :forwarded_port, host: 8082, guest: 8080
+
+  # have a data folder setup to share files between virtual machine and host
+  #
+  config.vm.synced_folder "/Data", "/data"
+
+  # configure virtualbox
+  #
+  config.vm.provider :virtualbox do |vm|
+
+    # give vm a nice name
+    #
+    vm.name = "docker workshop"
+
+    # dns resolving thingie
+    #
+    vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  end
+
+end
