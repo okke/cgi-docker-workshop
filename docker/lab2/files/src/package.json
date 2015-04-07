@@ -1,0 +1,10 @@
+{
+  "name": "docker-hello-from-node",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Say hi inside a docker container from node",
+  "author": "Me",
+  "dependencies": {
+    "express": "3.2.4"
+  }
+}
