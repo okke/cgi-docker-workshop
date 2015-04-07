@@ -1,5 +1,7 @@
 # Oefening 1, Een basis container
 
+## maak een docker image configuratie
+
 Maak een basis configuratie aan met behulp van de volgende Dockerfile
 
 ```
@@ -24,7 +26,16 @@ Controleer of de image aangemaakt is
 docker images
 ```
 
-En start een container
+## test de docker image
+
+Run een commando in een container
+
+```
+docker run <username>/base ls
+docker run <username>/base ps
+```
+
+Of start een (inter actieve) container
 
 ```
 docker run -it <username>/base
