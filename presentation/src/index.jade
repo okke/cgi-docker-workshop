@@ -41,24 +41,55 @@ html
           li ....
 
       section
-        h1 Matrix from hell
+        h2 Matrix from hell
         img(src='images/matrix-from-hell.png' height=300 width=600)
 
       section
-        h1 Hallo Container
+        h2 Hallo Container
         img(src='images/container.png' height=300 width=600)
 
       section
-        h2 Syntax Highlighting
-        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
+        h2 Vanuit 'Ops' perspectief (de buitenkant)
+        img(src='images/container2.png' height=300 width=600)
+
+      section
+        h2 Vanuit 'Dev' perspectief
+        br
+        img(src='images/container3.jpg' height=300 width=600)
+
+      section
+        h2 Een paar belangrijke concepten
+        ul
+          li 
+          li Alles is weggooibaar
+          li VM's vs. Containers
+          li Images &#8594; Container
+          li Images repositories
+          li ....
+
+      section
+        h2 En nog paar belangrijke concepten
+        ul
+          li 
+          li Volumes (data delen)
+          li Networking
+          li ....
+
+      section
+        h2 Start a container
         pre
           code.language-javascript.
-            bespoke.from('article', [
-              classes(),
-              keys(),
-              touch(),
-              bullets('li, .bullet')
-            ]);
+            docker run -it ubuntu
+
+      section
+        h2 Start a container and run a command inside
+        pre
+          code.language-javascript.
+            docker run ubuntu ps
+        pre
+          i PID TTY          TIME CMD
+          br
+          i   1 ?        00:00:00 ps
 
 
     script(src='build/build.js')
