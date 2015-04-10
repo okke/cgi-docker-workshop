@@ -20,7 +20,7 @@ html
         h2 Welk probleem willen we oplossen?
 
       section
-        h2 101+ mogelijke runtime omgevingen
+        h2 101+ mogelijke development stacks
         ul
           li 
           li httpd + static files 
@@ -31,20 +31,22 @@ html
           li ....
 
       section
-        h2 Touch Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a>
-
-      section
-        h2 Responsive Slides
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a>
-
-      section
-        h2 Bullet List
-        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
+        h2 101+ mogelijke runtime omgevingen
         ul
-          li Bullet 1
-          li Bullet 2
-          li Bullet 3
+          li 
+          li lokale machine
+          li test omgeving
+          li geclusterde acceptatie omgeving
+          li productie omgeving ergens in de cloud
+          li ....
+
+      section
+        h1 Matrix from hell
+        img(src='images/matrix-from-hell.png' height=300 width=600)
+
+      section
+        h1 Hallo Container
+        img(src='images/container.png' height=300 width=600)
 
       section
         h2 Syntax Highlighting
@@ -58,26 +60,5 @@ html
               bullets('li, .bullet')
             ]);
 
-      section(data-bespoke-hash='named-route')
-        h2 Named Route
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
-        p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
-
-      section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2 Emphatic Slide!
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-backdrop">bespoke-backdrop</a>
-
-      section
-        h2.bullet Just the beginning...
-        br
-        ul
-          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-          li Edit JavaScript in <em>'src/scripts/main.js'</em>
-        br
-        ul
-          li
-            strong Enjoy! :)
-            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
 
     script(src='build/build.js')
