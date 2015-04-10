@@ -16,10 +16,9 @@ Installeer Vagrant: http://www.vagrantup.com/downloads.html
 
 (!!! Let op !!! Installeer Vagrant in een directory zonder spaties! Dus niet in “c:\Program Files\Vagrant”)
 
-Binnen CGI wordt gebruik gemaakt van een proxy. Zorg dat je proxy instellingen goed zijn door de volgende systeem variabelen te definiëren:
+Binnen CGI wordt gebruik gemaakt van een proxy. Zorg dat je proxy instellingen goed zijn door de volgende systeem variabelen te definiëren in een `proxy-env.bat`:
 ```
-HTTP_PROXY=proxy.nl.logica.com:80
-HTTPS_PROXY=proxy.nl.logica.com:80
+cmd /k "SET HTTP_PROXY=proxy.nl.logica.com:80 & SET HTTPS_PROXY=proxy.nl.logica.com:80"
 ```
 
 En door de proxy plugin voor Vagrant te installeren: Run het volgende commando vanaf de commandline:
@@ -58,10 +57,10 @@ cd c:\Data
 git clone https://github.com/okke/cgi-docker-workshop.git
 ```
 
-Test de basisconfiguratie. run de volgende commandline commando’s
+Test de basisconfiguratie (zorg dat http://localhost:8080 vrij is). run de volgende commandline commando’s
 
 ```
-cd c:\Data\cgi-workshop-docker\vagrant
+cd c:\Data\cgi-docker-workshop\vagrant
 vagrant up
 vagrant ssh
 docker help
