@@ -1,0 +1,7 @@
+{
+  "name": "presentation-hello-docker",
+  "version": "0.0.0",
+  "dependencies": {
+    "prism": "gh-pages"
+  }
+}
