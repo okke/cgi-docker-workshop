@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Hello Docker</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article>
+      <section>
+        <h1>Hello Docker</h1><img src="images/docker-logo.jpg">
+        <h3>Okke van 't verlaat @ CGI</h3>
+      </section>
+      <section>
+        <h2>Welk probleem willen we oplossen?</h2>
+      </section>
+      <section>
+        <h2>101+ mogelijke development stacks</h2>
+        <ul>
+          <li></li>
+          <li>httpd + static files </li>
+          <li>ruby on rails + mysql + memcache</li>
+          <li>tomcat + jre8 + cassandra</li>
+          <li>play + mongodb + activemq</li>
+          <li>node.js + redis</li>
+          <li>....</li>
+        </ul>
+      </section>
+      <section>
+        <h2>101+ mogelijke runtime omgevingen</h2>
+        <ul>
+          <li></li>
+          <li>lokale machine</li>
+          <li>test omgeving</li>
+          <li>geclusterde acceptatie omgeving</li>
+          <li>productie omgeving ergens in de cloud</li>
+          <li>....</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Matrix from hell</h2><img src="images/matrix-from-hell.png" height="300" width="600">
+      </section>
+      <section>
+        <h2>Klinkt als een bekend probleem</h2><img src="images/matrix-from-hell2.png" height="300" width="600">
+      </section>
+      <section>
+        <h2>Hallo Container</h2><img src="images/container.png" height="300" width="600">
+      </section>
+      <section>
+        <h2>Vanuit 'Ops' perspectief (de buitenkant)</h2><img src="images/container2.png" height="300" width="600">
+      </section>
+      <section>
+        <h2>Vanuit 'Dev' perspectief</h2><br><img src="images/container3.jpg" height="300" width="600">
+      </section>
+      <section>
+        <h2>Een paar belangrijke concepten</h2>
+        <ul>
+          <li></li>
+          <li>Alles is bouwbaar dus ...</li>
+          <li>Alles is weggooibaar</li>
+          <li>VM's vs. Containers</li>
+          <li>Images &#8594; Container</li>
+          <li>Images repositories</li>
+          <li>....</li>
+        </ul>
+      </section>
+      <section>
+        <h2>En nog paar belangrijke concepten</h2>
+        <ul>
+          <li></li>
+          <li>Volumes (data delen)</li>
+          <li>Networking</li>
+          <li>....</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Start a container</h2>
+        <pre><code class="language-javascript">docker run -it ubuntu
+</code></pre>
+      </section>
+      <section>
+        <h2>Start a container and run a command inside</h2>
+        <pre><code class="language-javascript">docker run ubuntu ps</code></pre>
+        <pre><i>PID TTY          TIME CMD</i><br><i>  1 ?        00:00:00 ps</i></pre>
+      </section>
+      <section>
+        <h2>Start a container and detach</h2>
+        <pre><code class="language-javascript">docker run -d nlcgi/redis-srv
+docker ps</code></pre>
+        <pre><i>CONTAINER ID        IMAGE</i><br><i>3992ab89480d        nlcgi/redis-srv:latest</i></pre>
+      </section>
+      <section>
+        <h2>Share a volume with our host OS</h2>
+        <pre><code class="language-javascript">docker run -v /data:/data -it nlcgi/base
+</code></pre>
+      </section>
+      <section>
+        <h2>Share a volumes between containers</h2>
+        <pre><code class="language-javascript">docker create -v /dbshare --name shared-volume nlcgi/base
+docker run --volumes-from shared-volume -it nlcgi/rubydev
+</code></pre>
+      </section>
+      <section>
+        <h2>Link two containers</h2>
+        <pre><code class="language-javascript">docker run --name redis -d nlcgi/redis-srv
+docker run --link redis:db -it nlcgi/redis-cli
+</code></pre>
+      </section>
+      <section>
+        <h2>build an image from a Dockerfile</h2>
+        <pre><code class="language-javascript">docker build -t "nlcgi/base" images/nlcgi-base/
+docker images
+</code></pre>
+      </section>
+      <section>
+        <h2>Simple Dockerfile</h2>
+        <pre><code class="language-javascript">FROM ubuntu
+
+ENV http_proxy http://proxy.nl.logica.com:80
+ENV https_proxy http://proxy.nl.logica.com:80
+ENV no_proxy=localhost,127.0.0.1
+
+RUN apt-get update -y
+</code></pre>
+      </section>
+      <section>
+        <h2>A bit more sophisticated</h2>
+        <pre><code class="language-javascript">FROM nlcgi/base
+
+RUN apt-get install -y redis-server
+
+EXPOSE 6379
+
+ADD startup.sh /tmp/
+
+ENTRYPOINT exec /tmp/startup.sh
+</code></pre>
+      </section>
+      <section>
+        <h2>Examples</h2><br><img src="images/github.png" width="100" height="100"><br><a href="https://github.com/okke/mydockers">https://github.com/okke/mydockers</a>
+      </section>
+      <section>
+        <h2>Let's play</h2><img src="images/ship.jpg" width="50%" height="50%"><a href="https://github.com/okke/cgi-docker-workshop/tree/master/docker">https://github.com/okke/cgi-docker-workshop/tree/master/docker</a>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
