@@ -45,6 +45,10 @@ html
         img(src='images/matrix-from-hell.png' height=300 width=600)
 
       section
+        h2 Klinkt als een bekend probleem
+        img(src='images/matrix-from-hell2.png' height=300 width=600)
+
+      section
         h2 Hallo Container
         img(src='images/container.png' height=300 width=600)
 
@@ -121,6 +125,55 @@ html
           code.language-javascript.
             docker run --name redis -d nlcgi/redis-srv
             docker run --link redis:db -it nlcgi/redis-cli
+
+      section
+        h2 build an image from a Dockerfile
+        pre
+          code.language-javascript.
+            docker build -t "nlcgi/base" images/nlcgi-base/
+            docker images
+        pre
+          i REPOSITORY          TAG                 IMAGE ID
+          br
+          i
+
+      section
+        h2 Simple Dockerfile
+        pre
+          code.language-javascript.
+            FROM ubuntu
+            
+            ENV http_proxy http://proxy.nl.logica.com:80
+            ENV https_proxy http://proxy.nl.logica.com:80
+            ENV no_proxy=localhost,127.0.0.1
+
+            RUN apt-get update -y
+
+      section
+        h2 A bit more sophisticated
+        pre
+          code.language-javascript.
+            FROM nlcgi/base
+            
+            RUN apt-get install -y redis-server
+            
+            EXPOSE 6379
+            
+            ADD startup.sh /tmp/
+
+            ENTRYPOINT exec /tmp/startup.sh
+
+      section
+        h2 Examples
+        br
+        img(src='images/github.png' width=100 height=100)
+        br
+        a(href="https://github.com/okke/mydockers") https://github.com/okke/mydockers
+
+      section
+        h2 Let's play
+        img(src='images/ship.jpg' width="50%" height="50%")
+         
 
 
     script(src='build/build.js')
