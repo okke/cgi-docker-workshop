@@ -91,5 +91,36 @@ html
           br
           i   1 ?        00:00:00 ps
 
+      section
+        h2 Start a container and detach
+        pre
+          code.language-javascript.
+            docker run -d nlcgi/redis-srv
+            docker ps
+        pre
+          i CONTAINER ID        IMAGE
+          br
+          i 3992ab89480d        nlcgi/redis-srv:latest
+
+      section
+        h2 Share a volume with our host OS
+        pre
+          code.language-javascript.
+            docker run -v /data:/data -it nlcgi/base
+
+      section
+        h2 Share a volumes between containers
+        pre
+          code.language-javascript.
+            docker create -v /dbshare --name shared-volume nlcgi/base
+            docker run --volumes-from shared-volume -it nlcgi/rubydev
+
+      section
+        h2 Link two containers
+        pre
+          code.language-javascript.
+            docker run --name redis -d nlcgi/redis-srv
+            docker run --link redis:db -it nlcgi/redis-cli
+
 
     script(src='build/build.js')
