@@ -7,6 +7,7 @@ Wat heb je nodig om met Docker aan de slag te gaan?
 Docker heeft een Linux gebaseerd host OS nodig. We gebruiken VirtualBox om een Linux VM te draaien.
 
 Installeer VirtualBox: https://www.virtualbox.org/wiki/Downloads
+
 **Let op:** *VirtualBox 4.3.10 (released Mar 25th 2014) gaf problemen tijdens de workshop. Gebruik voor de zekerheid minimaal VirtualBox 4.3.24 (released March 2nd 2015).*
  
 ## Vagrant
@@ -73,3 +74,9 @@ Voordat we starten, zorg dat je de laatste versie van de basisconfiguratie hebt:
 cd c:\Data\cgi-workshop-docker
 git pull
 ```
+
+
+## Labs
+1. [Lab1](docker/lab1/README.md)
+2. [Lab2](docker/lab2/README.md)
+3. [Lab3](docker/lab3/README.md)
