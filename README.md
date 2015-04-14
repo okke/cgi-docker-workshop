@@ -7,14 +7,15 @@ Wat heb je nodig om met Docker aan de slag te gaan?
 Docker heeft een Linux gebaseerd host OS nodig. We gebruiken VirtualBox om een Linux VM te draaien.
 
 Installeer VirtualBox: https://www.virtualbox.org/wiki/Downloads
-
+**Let op:** *VirtualBox 4.3.10 (released Mar 25th 2014) gaf problemen tijdens de workshop. Gebruik voor de zekerheid minimaal VirtualBox 4.3.24 (released March 2nd 2015).*
+ 
 ## Vagrant
 
 Om gemakkelijk met linux images om te gaan, gebruiken we Vagrant. Met behulp van Vagrant configureren we VM’s op een manier om snel VM’s op te tuigen en weg te gooien.
 
 Installeer Vagrant: http://www.vagrantup.com/downloads.html
 
-(!!! Let op !!! Installeer Vagrant in een directory zonder spaties! Dus niet in “c:\Program Files\Vagrant”)
+**Let op:** *Installeer Vagrant in een directory zonder spaties! Dus niet in `c:\Program Files\Vagrant`*
 
 Binnen CGI wordt gebruik gemaakt van een proxy. Zorg dat je proxy instellingen goed zijn door de volgende systeem variabelen te definiëren in een `proxy-env.bat`:
 ```

@@ -1,12 +1,13 @@
 # Oefening 3, redis client server voorbeeld
 
 In deze oefening maken we 2 docker images aan. Voor de server en voor de client.
+Maak hiervoor `/data/redis/server` en `/data/redis/client` aan waarin de `Dockerfile` en bijbehorende bestanden
+geplaatst kunnen worden.
 
-
-Beide docker images hebben Redis installatie nodig.
+Beide docker images hebben Redis installatie nodig. 
 
 ```
-FROM <name>/base
+FROM <username>/base
 
 RUN apt-get install -y redis-server
 ```
@@ -25,13 +26,13 @@ RUN chmod +x /tmp/startup.sh
 ENTRYPOINT exec /tmp/startup.sh                        
 ```
 
-in de server configuratie dient de standaard Redis port worden opengezet:
+In de server configuratie dient de standaard Redis port worden opengezet:
 
 ```
 EXPOSE 6379
 ```
 
-het startup script voor de server:
+Het startup script voor de server:
 
 ```
 #!/bin/bash
@@ -52,7 +53,7 @@ Maak de images op de gebruikelijke manier
 Run de server met het volgende docker commando:
 
 ```
-docker run --name redis -d nlcgi/redis-srv
+docker run --name redis -d <username>/redis-srv
 ```
 
 (Merk op, --name geeft de container een naam die we nodig hebben om te kunnen linken, -d zorgt ervoor dat de container in de achtergrond doordraait)
@@ -61,13 +62,13 @@ docker run --name redis -d nlcgi/redis-srv
 Run de client met het volgende docker commando:
 
 ```
-docker run --link redis:db -it nlcgi/redis-cli
+docker run --link redis:db -it <username>/redis-cli
 ```
 (Merk op, de --link zorgt ervoor dat de container met de naam 'redis' gelinkt wordt als 'db'. Vervolgens wordt 'db' gebruikt als environment variable prefix voor het doorgeven vaan poort nummers)
 
 Je krijgt nu een Redis prompt waarin je redis commando's kan geven (zie http://redis.io/commands).
 
-probeer bijvoorbeeld
+Probeer bijvoorbeeld
 
 ```
 SET soep heet
