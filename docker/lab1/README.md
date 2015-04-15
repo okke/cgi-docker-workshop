@@ -1,8 +1,11 @@
 # Oefening 1, Een basis container
+De volgende commando's worden uitgevoerd vanuit de Ubuntu shell. De `c:\Data` directory is gekoppeld aan de `/data` directory van de Ubuntu virtual machine die de host zal zijn voor de Docker containers. Doordat deze directories gekoppeld zijn kunnen configuratie bestanden zowel vanaf het Windows host OS als de Ubuntu VM worden aangemaakt.
+
+Log in op de Ubuntu VM middels `vagrant ssh`
 
 ## maak een docker image configuratie
-
-Maak een basis configuratie aan met behulp van de volgende Dockerfile
+Maak de volgende directory aan: `/data/base` 
+Plaats hierin een `Dockerfile` bestand met de volgende basis configuratie
 
 ```
 FROM ubuntu

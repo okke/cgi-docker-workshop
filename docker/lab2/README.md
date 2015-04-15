@@ -2,27 +2,30 @@
 
 ## maak een docker image configuratie
 
-Maak een basis node.js configuratie aan met behulp van de volgende Dockerfile (Merk op, er wordt gebruik gemaakt van de eerder aangemaakte docker image)
+Maak de volgende directory aan: `/data/nodejs` 
 
-!! Doe dit in een aparte directory bijvoorbeeld docker/images/node
+Maak in deze directory een basis nodejs container aan met behulp van de volgende `Dockerfile`
 
 ```
 FROM <username>/base
 RUN apt-get update -y
-RUN apt-get install nodejs
-RUN apt-get install npm
+RUN apt-get install nodejs -y
+RUN apt-get install npm -y
 ```
+
+*Merk op, er wordt gebruik gemaakt van de eerder aangemaakte `base` docker container* 
+
 
 Test je nodejs configuratie door een image te maken en te kijken of je in een container gebaseerd op dit image een *nodejs* en een *npm* commando hebt.
 
 ```
-docker build -t "<name>/nodejs" .
-docker run -it <name>/nodejs
+docker build -t "<username>/nodejs" .
+docker run -it <username>/nodejs
 ```
 
-!! Maak wederom een nieuwe directory aan bijvoorbeeld docker/images/hellonode
+Maak wederom een nieuwe directory aan: `/data/hellonode` 
 
-Maak een source directory aan en plaats daar de volgende twee files in:
+Maak hierin een `src` directory aan en plaats daar de volgende twee files in:
 
 src/package.json
 ```
@@ -58,7 +61,7 @@ console.log('Running on http://localhost:' + PORT);
 En maak een Dockerfile aan
 
 ```
-FROM <name>/node
+FROM <username>/nodejs
 
 COPY ./src /src
 RUN cd /src; npm install
@@ -70,6 +73,6 @@ CMD ["nodejs", "/src/index.js"]
 Maak op de gebruikelijke wijze (docker build) een image en run deze met het volgende commando
 
 ```
-docker run -p 8080:8080
+docker run -d -p 8080:8080 <username>/nodejs
 ```
 

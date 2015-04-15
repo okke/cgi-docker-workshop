@@ -8,13 +8,15 @@ Docker heeft een Linux gebaseerd host OS nodig. We gebruiken VirtualBox om een L
 
 Installeer VirtualBox: https://www.virtualbox.org/wiki/Downloads
 
+**Let op:** *VirtualBox 4.3.10 (released Mar 25th 2014) gaf problemen tijdens de workshop. Gebruik voor de zekerheid minimaal VirtualBox 4.3.24 (released March 2nd 2015).*
+ 
 ## Vagrant
 
 Om gemakkelijk met linux images om te gaan, gebruiken we Vagrant. Met behulp van Vagrant configureren we VM’s op een manier om snel VM’s op te tuigen en weg te gooien.
 
 Installeer Vagrant: http://www.vagrantup.com/downloads.html
 
-(!!! Let op !!! Installeer Vagrant in een directory zonder spaties! Dus niet in “c:\Program Files\Vagrant”)
+**Let op:** *Installeer Vagrant in een directory zonder spaties! Dus niet in `c:\Program Files\Vagrant`*
 
 Binnen CGI wordt gebruik gemaakt van een proxy. Zorg dat je proxy instellingen goed zijn door de volgende systeem variabelen te definiëren in een `proxy-env.bat`:
 ```
@@ -72,3 +74,9 @@ Voordat we starten, zorg dat je de laatste versie van de basisconfiguratie hebt:
 cd c:\Data\cgi-workshop-docker
 git pull
 ```
+
+
+## Labs
+1. [Lab1](docker/lab1/README.md)
+2. [Lab2](docker/lab2/README.md)
+3. [Lab3](docker/lab3/README.md)
