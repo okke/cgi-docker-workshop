@@ -9,14 +9,14 @@ Maak in deze directory een basis nodejs container aan met behulp van de volgende
 ```
 FROM <username>/base
 RUN apt-get update -y
-RUN apt-get install nodejs -y
-RUN apt-get install npm -y
+RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash -
+RUN apt-get install -y nodejs
 ```
 
 *Merk op, er wordt gebruik gemaakt van de eerder aangemaakte `base` docker container* 
 
 
-Test je nodejs configuratie door een image te maken en te kijken of je in een container gebaseerd op dit image een *nodejs* en een *npm* commando hebt.
+Test je nodejs configuratie door een image te maken en te kijken of je in een container gebaseerd op dit image een *node* en een *npm* commando hebt.
 
 ```
 docker build -t "<username>/nodejs" .
@@ -67,7 +67,7 @@ COPY ./src /src
 RUN cd /src; npm install
 EXPOSE  8080
 
-CMD ["nodejs", "/src/index.js"]
+CMD ["node", "/src/index.js"]
 ```
 
 Maak op de gebruikelijke wijze (docker build) een image en run deze met het volgende commando
