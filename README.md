@@ -71,7 +71,7 @@ docker help
 Voordat we starten, zorg dat je de laatste versie van de basisconfiguratie hebt:
 
 ```
-cd c:\Data\cgi-workshop-docker
+cd c:\Data\cgi-docker-workshop
 git pull
 ```
 
